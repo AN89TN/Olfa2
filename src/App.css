@@ -1,0 +1,692 @@
+:root {
+  /* theme color variables to use in RGB declarations */
+  --red: 67;
+  --green: 67;
+  --blue: 67;
+  /*the threshold at which colors are considered "light". 
+Range: decimals from 0 to 1,
+recommended 0.5 - 0.6*/
+  --threshold: 0.7;
+  /*the threshold at which a darker border will be applied.
+Range: decimals from 0 to 1,
+recommended 0.8+*/
+  --border-threshold: 0.8;
+
+  --r: calc(var(--red) * 0.299);
+  --g: calc(var(--green) * 0.587);
+  --b: calc(var(--blue) * 0.114);
+
+  --sum: calc(var(--r) + var(--g) + var(--b));
+
+  --perceived-lightness: calc(var(--sum) / 255);
+
+
+  --color: hsl(0, 0%, calc((var(--perceived-lightness) - var(--threshold)) * -10000000%));
+  --anticolor: hsl(0, 0%, calc((var(--perceived-lightness) - var(--threshold)) * 10000000%));
+  /* for changing the background propriety */
+
+  --background: url("../public/motivo2-2.svg");
+}
+
+@keyframes box {
+  0% {
+    box-shadow: #27272c;
+  }
+
+  50% {
+    box-shadow: 0 0 15px var(--color);
+  }
+
+  100% {
+    box-shadow: #27272c;
+  }
+}
+
+@keyframes App-button-animation-bottom {
+  0% {
+    transform: translate(-26px, 0px);
+
+  }
+
+  50% {
+    transform: translate(-50px, 25px);
+
+  }
+
+  100% {
+    transform: translate(-26px, 0px);
+  }
+
+}
+
+@keyframes App-button-animation-top {
+  0% {
+    transform: translate(26px, 0px);
+
+  }
+
+  50% {
+    transform: translate(50px, -25px);
+
+  }
+
+  100% {
+    transform: translate(26px, 0px);
+  }
+
+}
+
+@keyframes App-logo-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 10s linear;
+  }
+
+  #topButton.fade,
+  #topButton2.fade {
+    animation: App-button-animation-top 1s linear;
+  }
+
+  #bottomButton.fade,
+  #bottomButton2.fade {
+    animation: App-button-animation-bottom 1s linear;
+  }
+
+
+}
+
+input {
+  text-align: center;
+}
+
+.Button-special-land {
+  border: none;
+  background: none;
+  margin: 2vh;
+  font-size: calc(3px + 2vmin);
+  font-family: 'Courier New', Courier, monospace;
+  ;
+  color: var(--color);
+}
+
+.Button-special-micro {
+  border: none;
+  background: none;
+  margin: 2vh;
+  font-size: calc(5px + 2vmin);
+  font-family: 'Courier New', Courier, monospace;
+  ;
+  color: var(--color);
+}
+
+
+.App-header {
+  background-image: var(--background);
+  background-color: rgb(var(--red), var(--green), var(--blue));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  font-family: 'Courier New', Courier, monospace;
+  font-size: calc(5px + 2vmin);
+  color: var(--color);
+  text-shadow: var(--anticolor) 1px 1px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.Botton-text {
+  background-color: var(--anticolor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(3px + 1vmin);
+  border-radius: 5px;
+}
+
+.Botton-text-land,
+.Botton-text-land2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(3px + 2vmin);
+}
+
+.Botton-text-land p:hover {
+  background-color: var(--color);
+  color: var(--anticolor);
+  animation: box 1.5s infinite;
+}
+
+.Botton-text-land p,
+.Botton-text-land p:active,
+.Botton-text-land2 p {
+  background-color: var(--anticolor);
+  border-radius: 8px;
+  padding: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--color);
+}
+
+.Button-special-land:hover,
+:focus {
+
+  .Botton-text {
+    text-shadow: var(--color) 3px 3px 10px;
+  }
+
+  .App-button-bottom-land {
+    transform: translate(-26px, 0px);
+  }
+
+  .App-button-top-land {
+    transform: translate(26px, 0px);
+  }
+
+  cursor: pointer;
+}
+
+.Button-special-micro:hover,
+:focus {
+
+  .Botton-text {
+    text-shadow: var(--color) 3px 3px 10px;
+  }
+
+  .App-button-bottom-micro {
+    transform: translate(-26px, 0px);
+  }
+
+  .App-button-top-micro {
+    transform: translate(26px, 0px);
+  }
+
+  cursor: pointer;
+}
+
+.App-button-top-land {
+  display: block;
+  padding-left: 13.5%;
+  height: 4vmin;
+  transition: transform 1s;
+
+}
+
+.App-button-bottom-land {
+  display: block;
+  height: 4vmin;
+  transition: transform 1s;
+
+}
+
+.App-button-top-micro {
+  display: block;
+  padding-left: 13.5%;
+  height: 2vmin;
+  transition: transform 0.5s;
+
+}
+
+.App-button-bottom-micro {
+  display: block;
+  height: 2vmin;
+  transition: transform 0.5s;
+
+}
+
+.Header-text {
+  margin-top: 30vmin;
+  margin-bottom: 10vmin;
+
+}
+
+.Footer {
+  font-family: 'spratregular_light';
+  background-color: #000000;
+  color: #ffffff;
+  padding: 2px;
+  bottom: 0;
+  text-align: center;
+  margin-top: 1px;
+}
+
+.Form-box {
+  display: flex;
+  background-color: rgba(64, 94, 94, 0.2);
+  min-height: 80vmin;
+  width: 90%;
+  border: 5px solid var(--color);
+  border-radius: 5px;
+  animation: box 1.5s infinite;
+  margin: 2%;
+}
+
+.log-in-box {
+  align-items: flex-start;
+  background-color: hsl(0, 0%, var(--anticolor), 0.2);
+  min-width: 50%;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px dashed #0000002b;
+}
+
+.sign-in-box {
+  align-items: flex-end;
+  background-color: hsl(0, 0%, var(--anticolor), 0.2);
+  min-width: 50%;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px dashed #0000002b;
+}
+
+.Login-forms {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.Login-forms label {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Login-forms input {
+  border-radius: 3px;
+  display: flex;
+  width: 70%;
+}
+
+dialog {
+  background-color: #0000002c;
+  overflow: hidden;
+}
+
+.spacer {
+  margin: 20px;
+}
+
+.spacer-contentpage {
+  margin-top: 30%;
+}
+
+.dialog-new-list {
+  background-image: var(--background);
+  background-color: rgb(var(--red), var(--green), var(--blue));
+  background-size: 100%;
+  background-repeat: space;
+  color: var(--color);
+  overflow: auto;
+  width: 50%;
+  height: 50%;
+}
+
+.spinner {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  animation: App-logo-spin reverse infinite 10s linear;
+}
+
+.spinner-text {
+  animation: App-logo-spin infinite 5s linear;
+  display: block;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 13px;
+  width: 180px;
+  height: 180px;
+}
+
+.loading {
+  margin-top: 210px;
+  width: 200px;
+  color: var(--color);
+  text-shadow: var(--anticolor) 3px 3px 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  font-size: calc(5px + 2vmin);
+  color: var(--color);
+  text-shadow: var(--anticolor) 1px 1px;
+  text-align: center;
+}
+
+.Nav-bar {
+  display: flex;
+  position: fixed;
+  background-image: var(--background);
+  background-size: 70%;
+  background-position: center;
+  background-color: var(--anticolor);
+  flex-direction: row;
+  width: 90%;
+  height: 4vh;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 0 0 8px 8px;
+  animation: box 1.5s infinite;
+  z-index: 99;
+}
+
+.button-nav {
+  position: relative;
+  color: var(--anticolor);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  font-size: calc(3px + 1vmin);
+  transition: 0.2s;
+  border-radius: 8px;
+  background-color: var(--color);
+  z-index: 1;
+}
+
+.button-nav:hover {
+  color: var(--color);
+  background-color: var(--anticolor);
+  animation: box 1.5s infinite;
+}
+
+.button-nav:active {
+  background-color: var(--color);
+  color: var(--anticolor);
+}
+
+.button-nav::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 8px;
+}
+
+.button-nav span {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  font-weight: 900;
+  text-align: center;
+}
+
+.Nav-logo img {
+  width: 12vh;
+  height: auto;
+  display: flex;
+  padding-left: 20px;
+}
+
+.Nav-logout {
+  margin-right: 20px;
+}
+
+.Profilo {
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+}
+
+.menu-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.change-color {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.change-color label {
+  margin: 10px;
+}
+
+.change-color p {
+  font-size: 0.5em;
+}
+
+.change-color .button-nav {
+  display: block;
+  margin-top: 5px;
+}
+
+hr {
+  margin: 20px;
+  width: 100%;
+}
+
+.list-table-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 280px;
+  height: 400px;
+  border: 2px solid var(--color);
+  word-break: break-word;
+  border-radius: 8px;
+  background-color: #0000001b;
+  background-repeat: no-repeat;
+  background-position: -880px -550px, 0 0;
+  background-image: -webkit-linear-gradient(top left,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.2) 37%,
+      rgba(255, 255, 255, 0.8) 45%,
+      rgba(255, 255, 255, 0.0) 50%);
+  background-size: 400% 400%, 0 0;
+  transition: background-position 0s ease;
+  cursor: pointer;
+  text-shadow: var(--anticolor) 1px 1px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.list-table-container:hover {
+  animation: box 1.5s infinite;
+  background-position: 0 0, 0 0;
+  transition-duration: 0.8s;
+}
+
+.spacer-test {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 99%;
+}
+
+.list-table-row {
+  margin: auto;
+  padding: 5px;
+}
+
+.list-table-container label {
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.searchBox {
+  margin-top: 7em;
+  top: 50%;
+  left: 50%;
+  background: var(--anticolor);
+  height: 28px;
+  border-radius: 40px;
+  padding: 10px;
+  border: var(--color) 2px solid;
+}
+
+.searchBox:hover>.searchInput {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.searchButton {
+  float: right;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: var(--color);
+  font-size: calc(3px + 2vmin);
+  transition: 0.4s;
+  line-height: 30px;
+  width: 240px;
+}
+
+.searchButton svg path {
+  fill: var(--anticolor);
+}
+
+.searchButton:active svg path {
+  fill: var(--color);
+}
+
+.searchButton:active {
+  background: var(--anticolor);
+  border: var(--color) 2px solid;
+}
+
+.dialog-list {
+  width: 75%;
+  height: 75%;
+  overflow: auto;
+  background-image: var(--background);
+  background-color: rgb(var(--red), var(--green), var(--blue));
+  background-size: 100%;
+  background-repeat: space;
+  color: var(--color);
+}
+
+.location-botton-exit {
+  margin-left: 80%;
+  margin-bottom: 3%;
+
+}
+
+.Lista-base li {
+  text-align: start;
+  margin: 10px;
+}
+
+.Lista-base li button {
+  margin-left: 3%;
+}
+
+.Lista-spesa li {
+  text-align: start;
+  margin: 10px;
+}
+
+.Lista-spesa li button {
+  margin-left: 3%;
+}
+
+.text-list-spesa {
+  margin: 30px;
+}
+
+.Lista-tabella li {
+  text-align: start;
+  margin: 10px;
+}
+
+.Lista-tabella li button {
+  margin: 10px 10px;
+}
+
+.dropDown-TDM {
+  margin-left: 20px;
+  display: inline;
+  overflow: hidden;
+  background: transparent;
+}
+
+.dropDown-TDM select {
+  overflow: hidden;
+  width: 16px;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--anticolor);
+  background-color: var(--color);
+}
+
+.submit-input-combo button {
+  color: var(--anticolor);
+  background-color: var(--color);
+  border: 0;
+  border-left: var(--anticolor) 1px solid;
+  border-radius: 0 7px 7px 0;
+  font-size: calc(3px + 1vmin);
+}
+
+.submit-input-combo button:hover {
+  color: var(--color);
+  background-color: var(--anticolor);
+  animation: box 1.5s infinite;
+}
+
+.submit-input-combo button:active {
+  color: var(--anticolor);
+  background-color: var(--color);
+}
+
+.submit-input-combo input {
+  border: 0;
+  flex: 1;
+  border-radius: 8px 0 0 8px;
+}
+
+.submit-input-combo {
+  display: inline-flex;
+  height: 20px;
+  width: 200px;
+  border: var(--anticolor) 1px solid;
+  border-radius: 8px;
+}
+
+.submit-input-combo input:focus { 
+  outline: none;
+}
